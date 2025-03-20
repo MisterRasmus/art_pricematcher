@@ -67,7 +67,7 @@ class Settings
         
         // Tilldela till Smarty
         $this->context->smarty->assign([
-            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'settings']),
+            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=settings',
             'settings' => $settings,
             'customer_groups' => $customerGroups,
             'categories' => $categories,

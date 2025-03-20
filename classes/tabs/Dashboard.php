@@ -56,7 +56,7 @@ class Dashboard
         
         // Prepare template data
         $templateData = [
-            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'dashboard']),
+            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=dashboard',
             'competitors' => $this->getCompetitors(),
             'statistics' => $this->getStatistics(),
             'cron_token' => $this->getCronToken(),
@@ -269,7 +269,7 @@ class Dashboard
         $this->context->cookie->write();
         
         // Omdirigera för att förhindra återsändning av formuläret vid uppdatering
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'dashboard']));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=dashboard');
     }
     
     /**
@@ -321,7 +321,7 @@ class Dashboard
         $this->context->cookie->write();
         
         // Omdirigera för att förhindra återsändning av formuläret vid uppdatering
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'dashboard']));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=dashboard');
     }
     
     /**
@@ -373,7 +373,7 @@ class Dashboard
         $this->context->cookie->write();
         
         // Omdirigera för att förhindra återsändning av formuläret vid uppdatering
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'dashboard']));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=dashboard');
     }
     
     /**
@@ -419,7 +419,7 @@ class Dashboard
         $this->context->cookie->write();
         
         // Omdirigera för att förhindra återsändning av formuläret vid uppdatering
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'dashboard']));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=dashboard');
     }
     
     /**
@@ -483,7 +483,7 @@ class Dashboard
     }
     
     /**
-     * Bearbeta formulärisändningar för dashboarden
+     * Bearbeta formulärisändringar för dashboarden
      * 
      * @return bool|array true om lyckad, array med fel annars
      */

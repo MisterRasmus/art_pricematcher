@@ -179,7 +179,7 @@ function refreshDiscounts() {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'getFilteredDiscounts',
             tab: 'active_discounts',
             competitor: competitorName,
@@ -354,7 +354,7 @@ function removeDiscount(discountId) {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'removeDiscount',
             tab: 'active_discounts',
             id_discount: discountId
@@ -407,7 +407,7 @@ function extendDiscount(discountId, days) {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'extendDiscount',
             tab: 'active_discounts',
             id_discount: discountId,
@@ -452,7 +452,7 @@ function cleanExpiredDiscounts() {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'cleanExpiredDiscounts',
             tab: 'active_discounts'
         },

@@ -12,20 +12,6 @@ if (!defined('_PS_VERSION_')) {
 }
 
 // Autoload för modulklasser
-spl_autoload_register(function ($className) {
-    // Kontrollera om klassen är relaterad till vår modul
-    if (strpos($className, 'ArtPriceMatcher\\') === 0) {
-        $classPath = str_replace('\\', '/', substr($className, 15));
-        $filePath = dirname(__FILE__) . '/classes/' . $classPath . '.php';
-
-        if (file_exists($filePath)) {
-            require_once $filePath;
-            return true;
-        }
-    }
-    return false;
-});
-
 class art_pricematcher extends Module
 {
     protected $config_form = false;
@@ -46,6 +32,27 @@ class art_pricematcher extends Module
 
         $this->ps_versions_compliancy = array('min' => '8.0', 'max' => '8.99');
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
+
+        $this->registerAutoloader();
+    }
+
+    private function registerAutoloader()
+    {
+        spl_autoload_register(function ($className) {
+            // Only handle classes in our namespace
+            if (strpos($className, 'ArtPriceMatcher\\') === 0) {
+                // Convert namespace to path
+                $classPath = str_replace('ArtPriceMatcher\\', '', $className);
+                $classPath = str_replace('\\', '/', $classPath);
+                $filePath = dirname(__FILE__) . '/classes/' . $classPath . '.php';
+                
+                if (file_exists($filePath)) {
+                    require_once $filePath;
+                    return true;
+                }
+            }
+            return false;
+        });
     }
 
     public function install()
@@ -110,7 +117,7 @@ class art_pricematcher extends Module
     private function installTabs()
     {
         // Installera huvudtabben
-        $mainTab = $this->installTab('AdminPriceMatcherController', 'ART PriceMatcher', 'SELL', 'money');
+        $mainTab = $this->installTab('AdminPriceMatcher', 'ART PriceMatcher', 'SELL', 'money');
 
         if ($mainTab) {
             // Vi behöver inte fler tabbar eftersom vår huvudkontroller nu hanterar alla vyer
@@ -126,7 +133,7 @@ class art_pricematcher extends Module
     private function uninstallTabs()
     {
         $tabs = [
-            'AdminPriceMatcherController'
+            'AdminPriceMatcher'
         ];
 
         foreach ($tabs as $class_name) {
@@ -189,7 +196,7 @@ class art_pricematcher extends Module
     {
         $controller = Context::getContext()->controller;
 
-        if ($controller->controller_name == 'AdminPriceMatcherController') {
+        if ($controller->controller_name == 'AdminPriceMatcher') {
             $this->context->controller->addCSS($this->_path . 'views/css/admin.css');
             $this->context->controller->addJS($this->_path . 'views/js/admin.js');
         }
@@ -202,7 +209,7 @@ class art_pricematcher extends Module
     {
         $controller = Context::getContext()->controller;
 
-        if ($controller->controller_name == 'AdminPriceMatcherController') {
+        if ($controller->controller_name == 'AdminPriceMatcher') {
             // Lägg till Bootstrap-stöd om det behövs
             $this->context->controller->addJquery();
 
@@ -225,10 +232,10 @@ class art_pricematcher extends Module
     }
 
     /**
-     * Omdirigera till AdminPriceMatcherController när modulen öppnas från modulmenyn
+     * Omdirigera till AdminPriceMatcher när modulen öppnas från modulmenyn
      */
     public function getContent()
     {
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcherController', true));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminPriceMatcher', true));
     }
 }

@@ -7,21 +7,45 @@
     {/foreach}
 </div>
 
-{* Visa version och länkar *}
-<div class="panel" style="margin-top: 20px;">
-    <div class="panel-heading">
-        <i class="icon-info-circle"></i> {l s='Information' mod='art_pricematcher'}
-    </div>
-    <div class="panel-body">
-        <p>
-            <a href="https://www.art.se" target="_blank" rel="noopener noreferrer">
-                <i class="icon-external-link"></i> {l s='Documentation' mod='art_pricematcher'}
-            </a>
-        </p>
-        <p>
-            <a href="https://www.art.se/support" target="_blank" rel="noopener noreferrer">
-                <i class="icon-life-ring"></i> {l s='Support' mod='art_pricematcher'}
-            </a>
-        </p>
-    </div>
-</div>
+<style>
+.list-group {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #555;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #25b9d7;
+    border-color: #25b9d7;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+</style>

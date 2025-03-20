@@ -75,9 +75,7 @@ class Statistics
         $totalOperations = $this->getOperationsCount();
         $totalPages = ceil($totalOperations / $this->items_per_page);
         
-        $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], [
-            'tab' => 'statistics'
-        ]);
+        $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=statistics';
         
         $pagination = [
             'current_page' => $currentPage,
@@ -349,9 +347,7 @@ class Statistics
                 $totalOperations = $this->getFilteredOperationsCount($operationType, $competitorId, $dateRange);
                 $totalPages = ceil($totalOperations / $this->items_per_page);
                 
-                $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], [
-                    'tab' => 'statistics'
-                ]);
+                $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=statistics';
                 
                 $pagination = [
                     'current_page' => $page,
@@ -943,10 +939,7 @@ class Statistics
     private function loadJSTranslations()
     {
         Media::addJsDef([
-            'priceMatcherStatisticsAjaxUrl' => $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], [
-                'ajax' => 1,
-                'tab' => 'statistics'
-            ])
+            'priceMatcherStatisticsAjaxUrl' => $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=statistics'
         ]);
     }
     

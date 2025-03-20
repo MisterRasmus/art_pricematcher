@@ -11,7 +11,7 @@
         <a href="{$smarty.server.HTTP_REFERER|escape:'html':'UTF-8'}" class="btn btn-default">
             <i class="icon-arrow-left"></i> {l s='Go back' mod='art_pricematcher'}
         </a>
-        <a href="{$link->getAdminLink('AdminPriceMatcherController', true)}" class="btn btn-primary">
+        <a href="{$link->getAdminLink('AdminPriceMatcher')}" class="btn btn-primary">
             <i class="icon-home"></i> {l s='Go to dashboard' mod='art_pricematcher'}
         </a>
     </p>

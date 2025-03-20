@@ -67,7 +67,7 @@ function toggleCompetitorStatus(competitorId, status) {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'toggleCompetitor',
             tab: 'competitors',
             id_competitor: competitorId,
@@ -116,7 +116,7 @@ function deleteCompetitor(competitorId) {
         url: currentIndex + '&token=' + token + '&ajax=1',
         type: 'POST',
         data: {
-            controller: 'AdminPriceMatcherController',
+            controller: 'AdminPriceMatcher',
             action: 'deleteCompetitor',
             tab: 'competitors',
             id_competitor: competitorId

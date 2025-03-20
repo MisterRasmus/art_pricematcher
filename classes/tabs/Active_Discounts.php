@@ -71,9 +71,7 @@ class Active_Discounts
         $totalPages = ceil($totalDiscounts / $this->items_per_page);
         
         // Skapa pagination-länk
-        $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], [
-            'tab' => 'active_discounts'
-        ]);
+        $paginationLink = $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=active_discounts';
         
         // Lägg till konkurrent-filter i pagination-länk om det finns
         if (!empty($competitor)) {

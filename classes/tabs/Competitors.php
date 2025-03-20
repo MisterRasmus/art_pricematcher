@@ -121,7 +121,7 @@ class %s extends CompetitorBase
         $globalSettings = $this->getGlobalSettings();
         
         $templateData = [
-            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcherController', true, [], ['tab' => 'competitors']),
+            'form_action' => $this->context->link->getAdminLink('AdminPriceMatcher') . '&tab=competitors',
             'competitors' => $competitors,
             'settings' => [
                 'global' => $globalSettings
